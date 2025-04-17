@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import css from './Register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 const Register = () => {
 
 const [username, setUsername] = useState()   
 const [email, setEmail] = useState()    
-const [password, setPassword] = useState()    
-
+const [password, setPassword] = useState()   
+const navigate = useNavigate() 
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ const handleSubmit = async (e) => {
       const response = await axios.post('http://localhost:3001/register', 
       { username, email, password });
       console.log(response);
+      navigate('/login')
     } catch (error) {
       console.error(error);
     }
