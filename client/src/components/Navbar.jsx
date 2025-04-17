@@ -14,7 +14,9 @@ const Navbar = () => {
         <Link className={css.link} to='/contact'>Contact</Link>
       </div>
       <div>
-        <h5>Register/Login</h5>
+      <Link className={css.link} to='/register'>Register/Login</Link>
+
+
       </div>
     </div>
   );

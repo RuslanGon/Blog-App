@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #f12711, #00c6ff);
+  }
+  
+  .formWrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+  }
+  
+  .title {
+    margin-bottom: 16px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .formGroup {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s;
+  }
+  
+  .input:focus {
+    border-color: #1e3c72;
+    outline: none;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0559f5;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0240aa;
+  }
+  
+  .text {
+    margin-top: 16px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .linkButton {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: green;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .linkButton:hover {
+    background-color: rgb(0, 95, 0);
+  }
+  
