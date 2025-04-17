@@ -12,14 +12,20 @@ import axios from "axios";
 export const userContext = createContext();
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   axios.defaults.withCredentials = true
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get("http://localhost:3001/", { withCredentials: true });
-      setUser(response.data);
-      console.log(response.data);
+      try {
+        const response = await axios.get("http://localhost:3001/", { withCredentials: true });
+        console.log(response.data);  // Логируем, чтобы проверить, что приходит
+        if (response.data.email) {
+          setUser(response.data);  // Обновляем состояние с данными пользователя
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
     };
     fetchUser();
   }, []);
