@@ -59,31 +59,24 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Email and password are required" });
     }
 
-    // Проверка существования пользователя
     const user = await UserModel.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
-    // Сравнение пароля с сохраненным в базе данных
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
-    // Создание токена
     const token = jwt.sign(
       { userId: user._id, email: user.email },
       process.env.MY_SECRET_KEY, 
-      { expiresIn: '1h' }        // Токен истечет через 1 час
+      { expiresIn: '1h' } // Токен истечет через 1 час
     );
-
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,        
       sameSite: 'strict'   
     });
-
     res.status(200).json({
       message: "Login successful",
       token,
@@ -92,7 +85,6 @@ export const loginUser = async (req, res) => {
         username: user.username,
       }
     });
-
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server error during login" });
