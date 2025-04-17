@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import startServer from './db.js';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
-import { postUser } from './controllers/user.js';
+import { loginUser, registertUser } from './controllers/user.js';
+// import { postUs } from './controllers/user.js';
 
 dotenv.config(); 
 
@@ -13,7 +14,8 @@ app.use(cors({origin: ['http://localhost:5173'],credentials: true}))
 app.use(cookieParser())
 
 // Register user
-
-app.post('/register', postUser)
+app.post('/register', registertUser)
+// Login user
+app.post('/login', loginUser)
 
 startServer(app);
