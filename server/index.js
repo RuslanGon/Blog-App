@@ -5,7 +5,6 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import { loginUser, logoutUser, registertUser, verifyUser, } from './controllers/user.js';
 import { decode } from 'jsonwebtoken';
-// import { postUs } from './controllers/user.js';
 
 dotenv.config(); 
 
@@ -22,7 +21,6 @@ app.post('/login', loginUser)
 app.get('/', verifyUser, async (req, res) => {
     return res.json({email: req.email, username: req.username})
 })
-
 // Logout
 app.post('/logout', logoutUser)
 
