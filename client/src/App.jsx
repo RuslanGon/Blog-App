@@ -14,6 +14,7 @@ export const userContext = createContext();
 function App() {
   const [user, setUser] = useState(null);
 
+  axios.defaults.withCredentials = true
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get("http://localhost:3001/", { withCredentials: true });
