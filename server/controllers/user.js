@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import jwt, { decode } from 'jsonwebtoken';
 import UserModel from '../models/User.js'; 
 
 // Register user
@@ -90,6 +90,23 @@ export const loginUser = async (req, res) => {
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server error during login" });
+  }
+};
+
+// verifyUser
+export const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ message: 'Token is missing' });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.MY_SECRET_KEY);
+    req.email = decoded.email;
+    req.username = decoded.username;
+    next();
+  } catch (error) {
+    console.error('Token verification error:', error.message);
+    return res.status(403).json({ message: 'Invalid token' });
   }
 };
 

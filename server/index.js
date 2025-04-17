@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import startServer from './db.js';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
-import { loginUser, registertUser } from './controllers/user.js';
+import { loginUser, registertUser, verifyUser, } from './controllers/user.js';
+import { decode } from 'jsonwebtoken';
 // import { postUs } from './controllers/user.js';
 
 dotenv.config(); 
@@ -17,5 +18,10 @@ app.use(cookieParser())
 app.post('/register', registertUser)
 // Login user
 app.post('/login', loginUser)
+// verifyUser
+app.get('/', verifyUser, async (req, res) => {
+    return res.json({email: req.email, username: req.username})
+})
+
 
 startServer(app);
