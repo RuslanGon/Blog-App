@@ -18,8 +18,8 @@ const Login = () => {
           </div>
           <button type="button" className={css.button}>Login</button>
         </form>
-        <p className={css.text}>Not register</p>
-        <Link to='/register' className={css.linkbtn}>Register</Link>
+        <p className={css.text}>Not register?</p>
+        <Link to='/register' className={css.linkbtn}>Singup</Link>
       </div>
     </div>
   );
