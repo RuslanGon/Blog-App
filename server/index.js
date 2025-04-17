@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import startServer from './db.js';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
-import { loginUser, registertUser, verifyUser, } from './controllers/user.js';
+import { loginUser, logoutUser, registertUser, verifyUser, } from './controllers/user.js';
 import { decode } from 'jsonwebtoken';
 // import { postUs } from './controllers/user.js';
 
@@ -22,6 +22,9 @@ app.post('/login', loginUser)
 app.get('/', verifyUser, async (req, res) => {
     return res.json({email: req.email, username: req.username})
 })
+
+// Logout
+app.post('/logout', logoutUser)
 
 
 startServer(app);

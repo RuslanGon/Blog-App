@@ -110,3 +110,19 @@ export const verifyUser = (req, res, next) => {
   }
 };
 
+// Logout
+export const logoutUser = async (req, res) => {
+  try {
+    // Удаляем куку с токеном
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // true в продакшене
+      sameSite: 'strict',
+    });
+    return res.status(200).json({ message: 'Logged out successfully' });
+  } catch (error) {
+    console.error('Logout error:', error);
+    return res.status(500).json({ message: 'Server error during logout' });
+  }
+};
+
