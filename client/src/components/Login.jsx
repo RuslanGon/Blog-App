@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import css from './Register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');    
-  const [password, setPassword] = useState('');    
+  const [password, setPassword] = useState('');  
+  const navigate = useNavigate()  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const Login = () => {
         { email, password },  { withCredentials: true }
       );
       console.log("Response:", response);
+      navigate('/')
     } catch (error) {
       console.error("Error during login:", error.response ? error.response.data : error.message);
     }
