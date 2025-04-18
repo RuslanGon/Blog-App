@@ -6,15 +6,14 @@ import axios from "axios";
 
 const Navbar = () => {
   const { user, setUser } = useContext(userContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Локальное состояние для отслеживания логина
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
-  // Логика кнопки Logout
   const handleLogout = () => {
-    setUser({});  // Очищаем данные пользователя
-    axios.post("http://localhost:3001/logout", {}, { withCredentials: true })  // Логика для выхода
+    setUser({}); 
+    axios.post("http://localhost:3001/logout", {}, { withCredentials: true }) 
       .then(() => {
         console.log("User logged out");
-        setIsLoggedIn(false);  // Обновляем состояние после выхода
+        setIsLoggedIn(false); 
       })
       .catch((error) => {
         console.error("Logout error", error);
@@ -23,11 +22,11 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user.email) {
-      setIsLoggedIn(true); // Если есть email, то пользователь залогинен
+      setIsLoggedIn(true); 
     } else {
-      setIsLoggedIn(false); // Если нет email, то пользователь не залогинен
+      setIsLoggedIn(false); 
     }
-  }, [user]);  // Эффект сработает каждый раз, когда user изменится
+  }, [user]);  
 
   return (
     <div className={css.navbar}>
@@ -40,7 +39,7 @@ const Navbar = () => {
         <Link className={css.link} to='/contact'>Contact</Link>
       </div>
       {
-        isLoggedIn ?  // Отображаем кнопку Logout, если пользователь залогинен
+        isLoggedIn ? 
           <div>
             <input className={css.btn_logout} type="button" value="Logout" onClick={handleLogout} />
           </div>

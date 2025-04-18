@@ -39,4 +39,9 @@
     border: 1px solid blue;
     padding:5px;
     border-radius: 5px;
+    font-weight: bolder;
+  }
+
+  .btn_logout:hover {
+    background-color: #2a5298;
   }
