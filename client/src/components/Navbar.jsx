@@ -42,7 +42,7 @@ const Navbar = () => {
       {
         isLoggedIn ?  // Отображаем кнопку Logout, если пользователь залогинен
           <div>
-            <input type="button" value="Logout" onClick={handleLogout} />
+            <input className={css.btn_logout} type="button" value="Logout" onClick={handleLogout} />
           </div>
           :
           <div>

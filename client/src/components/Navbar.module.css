@@ -34,3 +34,9 @@
     transform-origin: left;
   }
   
+  .btn_logout {
+    cursor: pointer;
+    border: 1px solid blue;
+    padding:5px;
+    border-radius: 5px;
+  }
