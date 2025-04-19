@@ -17,6 +17,22 @@ const storage = multer.diskStorage({
 
 // Create Post
 export const createPost = async (req, res) => {
-  console.log(req.file);
-}
+  try {
+    const post = await PostModel.create({
+      title: req.body.title,
+      desc: req.body.desc, 
+      file: req.file?.filename, 
+    });
+    res.status(201).json({
+      message: "Пост успешно создан",
+      user: post,
+    });
+  } catch (error) {
+    console.error("Ошибка при создании поста:", error);
+    res.status(500).json({
+      message: "Не удалось создать пост",
+      error: error.message,
+    });
+  }
+};
 
