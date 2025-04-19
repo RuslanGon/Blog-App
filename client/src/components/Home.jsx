@@ -21,20 +21,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        {posts.map((post) => (
-          <div className={css.post}>
-            <img
-              src={`http://localhost:3001/Image/${post.file}`} alt={post.title}/>
-            <div className={css.post_text}>
-              <h3>{post.title}</h3>
-              <p>{post.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div className={css.grid}>
+    {posts.map((post) => (
+      <div key={post._id} className={css.post}>
+        <img src={`http://localhost:3001/Image/${post.file}`} alt={post.title} />
+        <div className={css.post_text}>
+          <h3>{post.title}</h3>
+          <p>{post.desc}</p>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
   );
 }
 
