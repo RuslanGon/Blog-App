@@ -29,6 +29,10 @@ const PostCard = () => {
           <h2>{post.title}</h2>
           <p>{post.desc}</p>
         </div>
+       <div className={css.div_btn}>
+       <button className={css.btn}>Edit</button>
+      <button className={css.btn}>Delete</button>
+       </div>
       </div>
     </div>
   );
