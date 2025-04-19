@@ -65,15 +65,17 @@ gap: 230px;
 }
 
 .btn {
-    padding: 10px 10px;
-    font-size: 12px;
+    min-width: 100px; 
+    padding: 10px;
+    font-size: 14px;
     color: white;
     background-color: #0072ff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-
+    text-align: center;
+    display: inline-block;
 }
 
 .btn:hover {
