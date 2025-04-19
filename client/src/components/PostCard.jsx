@@ -41,8 +41,8 @@ const PostCard = () => {
           <p>{post.desc}</p>
         </div>
        <div className={css.div_btn}>
-       <button className={css.btn}>Edit</button>
-      <button onClick={handleDeletePost} className={css.btn}>Delete</button>
+       <Link className={css.btn}>Edit</Link>
+      <Link onClick={handleDeletePost} className={css.btn}>Delete</Link>
        </div>
       </div>
     </div>
