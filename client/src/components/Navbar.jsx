@@ -35,7 +35,10 @@ const Navbar = () => {
       </div>
       <div>
         <Link className={css.link} to='/'>Home</Link>
-        <Link className={css.link} to='/create'>Create</Link>
+        {user.email ? 
+        <Link className={css.link} to='/create'>Create</Link> : 
+        <></>
+      }
         <Link className={css.link} to='/contact'>Contact</Link>
       </div>
       {

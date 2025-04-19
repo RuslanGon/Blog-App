@@ -5,7 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import { loginUser, logoutUser, registertUser, verifyUser, } from './controllers/user.js';
 // import { decode } from 'jsonwebtoken';
-import { createPost } from './controllers/post.js';
+import { createPost, getPosts } from './controllers/post.js';
 import { upload } from './controllers/post.js';
 
 dotenv.config(); 
@@ -27,6 +27,8 @@ app.get('/', verifyUser, async (req, res) => {
 app.post('/logout', logoutUser)
 // Create Post
 app.post('/create',verifyUser, upload.single('file'), createPost)
+// Get Posts
+app.get('/getposts', getPosts)
 
 
 startServer(app)

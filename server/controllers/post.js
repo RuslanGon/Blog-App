@@ -36,3 +36,14 @@ export const createPost = async (req, res) => {
   }
 };
 
+// Get Posts
+export const getPosts = async (req, res) => {
+  try {
+    const posts = await PostModel.find();
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error("Ошибка при получении постов:", error);
+    res.status(500).json({ message: "Не удалось получить посты" });
+  }
+};
+
