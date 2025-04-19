@@ -47,3 +47,19 @@ export const getPosts = async (req, res) => {
   }
 };
 
+// Get post by id
+export const getPostById = async (req, res) => {
+  const { id } = req.params; 
+  try {
+    const post = await PostModel.findById(id);
+    
+    if (!post) {
+      return res.status(404).json({ message: 'Пост не найден' });
+    }
+    res.status(200).json(post);
+  } catch (error) {
+    console.error('Ошибка при получении поста:', error);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+};
+
