@@ -5,7 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import { loginUser, logoutUser, registertUser, verifyUser, } from './controllers/user.js';
 // import { decode } from 'jsonwebtoken';
-import { createPost, deletePost, getPostById, getPosts } from './controllers/post.js';
+import { createPost, deletePost, editPost, getPostById, getPosts } from './controllers/post.js';
 import { upload } from './controllers/post.js';
 
 dotenv.config(); 
@@ -34,6 +34,8 @@ app.get('/getposts', getPosts)
 app.get('/getpostbyid/:id', getPostById)
 // Delete post by id
 app.delete('/deletepost/:id', deletePost)
+// Edit post by id
+app.put('/editpost/:id',upload.single('file'), editPost)
 
 
 startServer(app)

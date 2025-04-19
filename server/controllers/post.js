@@ -98,3 +98,41 @@ export const deletePost = async (req, res) => {
   }
 };
 
+// Edit post by id
+export const editPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, desc } = req.body;
+    let updatedData = { title, desc };
+
+    console.log(`Редактирование поста с id: ${id}`);
+
+    const post = await PostModel.findById(id);
+    if (!post) {
+      console.log('Пост не найден');
+      return res.status(404).json({ message: 'Пост не найден' });
+    }
+
+    if (req.file) {
+      // Удаление старого файла
+      if (post.file) {
+        const oldFilePath = path.join(IMAGE_FOLDER, post.file);
+        try {
+          await fs.unlink(oldFilePath);
+          console.log('Старый файл удалён:', oldFilePath);
+        } catch (err) {
+          console.warn('Ошибка при удалении старого файла:', err.message);
+        }
+      }
+      updatedData.file = req.file.filename;
+      console.log('Новый файл добавлен:', req.file.filename);
+    }
+
+    const updatedPost = await PostModel.findByIdAndUpdate(id, updatedData, { new: true });
+    console.log('Пост успешно обновлён:', updatedPost);
+    res.json({ message: 'Пост успешно обновлён' });
+  } catch (error) {
+    console.error('Ошибка при редактировании поста:', error);
+    res.status(500).json({ message: 'Ошибка сервера при редактировании поста', error: error.message });
+  }
+};

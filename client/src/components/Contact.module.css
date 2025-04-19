@@ -1,0 +1,79 @@
+.contactPage_container {
+    max-width: 600px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 40px;
+    background-color: #f9fafb;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .contactPage_title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+  
+  .contactPage_description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  
+  .contactPage_info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .contactPage_item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #ffffff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+  }
+  
+  .contactPage_item:hover {
+    transform: translateY(-2px);
+    background-color: #f0f4ff;
+  }
+  
+  .contactPage_icon {
+    font-size: 22px;
+    color: #3b82f6;
+  }
+  
+  .contactPage_item a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .contactPage_item a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+  
+  .contactPage_backLink {
+    display: inline-block;
+    font-size: 15px;
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .contactPage_backLink:hover {
+    color: #1a1a1a;
+  }
+  

@@ -9,6 +9,7 @@ import Contact from "./components/Contact.jsx";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import PostCard from "./components/PostCard.jsx";
+import EditPost from "./components/EditPost.jsx";
 
 export const userContext = createContext();
 
@@ -49,7 +50,7 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/post/:id" element={<PostCard />} />
-
+        <Route path="/edit/:id" element={<EditPost />} />
       </Routes>
     </userContext.Provider>
   );

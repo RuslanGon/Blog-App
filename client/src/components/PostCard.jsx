@@ -41,7 +41,7 @@ const PostCard = () => {
           <p>{post.desc}</p>
         </div>
        <div className={css.div_btn}>
-       <Link className={css.btn}>Edit</Link>
+       <Link to={`/edit/${post._id}`} className={css.btn}>Edit</Link>
       <Link onClick={handleDeletePost} className={css.btn}>Delete</Link>
        </div>
       </div>
