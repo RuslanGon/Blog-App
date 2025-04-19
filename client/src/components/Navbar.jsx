@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <div className={css.navbar}>
       <div>
-        <h3>Blog App</h3>
+        <Link className={css.h2} to='/'>Blog App</Link>
       </div>
       <div>
         <Link className={css.link} to='/'>Home</Link>
