@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import css from './Home.module.css'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -23,13 +24,15 @@ const Home = () => {
   return (
     <div className={css.grid}>
     {posts.map((post) => (
-      <div key={post._id} className={css.post}>
+      <Link to={`/post/${post._id}`} key={post._id}>
+      <div className={css.post}>
         <img src={`http://localhost:3001/Image/${post.file}`} alt={post.title} />
         <div className={css.post_text}>
           <h3>{post.title}</h3>
           <p>{post.desc}</p>
         </div>
       </div>
+      </Link>
     ))}
   </div>
   );

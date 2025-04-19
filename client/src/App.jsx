@@ -8,6 +8,7 @@ import Create from "./components/Create.jsx";
 import Contact from "./components/Contact.jsx";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import PostCard from "./components/PostCard.jsx";
 
 export const userContext = createContext();
 
@@ -21,9 +22,9 @@ function App() {
     const fetchUser = async () => {
       try {
         const response = await axios.get("http://localhost:3001/", { withCredentials: true });
-        console.log(response.data);  // Логируем, чтобы проверить, что приходит
+        console.log(response.data);  
         if (response.data.email) {
-          setUser(response.data);  // Обновляем состояние с данными пользователя
+          setUser(response.data);  
         }
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -47,6 +48,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<Create />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/post/:id" element={<PostCard />} />
+
       </Routes>
     </userContext.Provider>
   );
