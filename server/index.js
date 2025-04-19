@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json())
-app.use(cors({origin: ['http://localhost:5173'],credentials: true}))
+app.use(cors({origin: ['http://localhost:5173', 'https://blog-app-zeta-six-50.vercel.app/'],credentials: true}))
 app.use(cookieParser())
 app.use(express.static('public'))
 
