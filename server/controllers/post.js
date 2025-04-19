@@ -1,5 +1,7 @@
 import multer from "multer"
 import PostModel from "../models/Post.js"
+import fs from 'fs/promises';
+import path from 'path';
 
 // Multer
 const storage = multer.diskStorage({
@@ -60,6 +62,39 @@ export const getPostById = async (req, res) => {
   } catch (error) {
     console.error('Ошибка при получении поста:', error);
     res.status(500).json({ message: 'Ошибка сервера' });
+  }
+};
+
+// Delete post by id
+
+const IMAGE_FOLDER = path.join(process.cwd(), 'public', 'Image');
+
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const post = await PostModel.findById(id);
+    if (!post) {
+      return res.status(404).json({ message: 'Пост не найден' });
+    }
+
+    // Удаление файла картинки, если он существует
+    if (post.file) {
+      const filePath = path.join(IMAGE_FOLDER, post.file);
+      try {
+        await fs.unlink(filePath);
+        console.log('Файл удалён:', filePath);
+      } catch (fileErr) {
+        console.warn('Файл не найден или уже удалён:', filePath);
+      }
+    }
+    // Удаление самого поста
+    await PostModel.findByIdAndDelete(id);
+
+    res.json({ message: 'Пост успешно удалён' });
+  } catch (error) {
+    console.error('Ошибка при удалении поста:', error);
+    res.status(500).json({ message: 'Ошибка сервера при удалении поста' });
   }
 };
 

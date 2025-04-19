@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import css from './PostCard.module.css';
 
 const PostCard = () => {
   const [post, setPost] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchPostById = async () => {
@@ -20,6 +21,16 @@ const PostCard = () => {
     fetchPostById();
   }, [id]);
 
+  const handleDeletePost = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/deletepost/${id}`);
+      navigate('/');
+    } catch (error) {
+      console.error('Ошибка при удалении поста:', error);
+      alert('Не удалось удалить пост');
+    }
+  }
+
   return (
     <div className={css.postCardContainer}>
       <div className={css.postCard}>
@@ -31,7 +42,7 @@ const PostCard = () => {
         </div>
        <div className={css.div_btn}>
        <button className={css.btn}>Edit</button>
-      <button className={css.btn}>Delete</button>
+      <button onClick={handleDeletePost} className={css.btn}>Delete</button>
        </div>
       </div>
     </div>
