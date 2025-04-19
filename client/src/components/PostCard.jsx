@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import css from './PostCard.module.css';
 
 const PostCard = () => {
@@ -23,6 +23,7 @@ const PostCard = () => {
   return (
     <div className={css.postCardContainer}>
       <div className={css.postCard}>
+        <Link className={css.link} to='/'>🔙</Link>
         <img src={`http://localhost:3001/Image/${post.file}`} alt={post.title} />
         <div className={css.postCardContent}>
           <h2>{post.title}</h2>
