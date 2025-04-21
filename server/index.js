@@ -1,41 +1,38 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import startServer from './db.js';
-import cors from 'cors'
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { loginUser, logoutUser, registertUser, verifyUser, } from './controllers/user.js';
-// import { decode } from 'jsonwebtoken';
+import { loginUser, logoutUser, registertUser, verifyUser } from './controllers/user.js';
 import { createPost, deletePost, editPost, getPostById, getPosts } from './controllers/post.js';
 import { upload } from './controllers/post.js';
 
 dotenv.config(); 
 
 const app = express();
-app.use(express.json())
-app.use(cors({origin: ['http://localhost:5173', 'https://blog-app-zeta-six-50.vercel.app/'],credentials: true}))
-app.use(cookieParser())
-app.use(express.static('public'))
 
-// Register user
-app.post('/register', registertUser)
-// Login user
-app.post('/login', loginUser)
-// verifyUser
+// Настройка CORS
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://blog-app-zeta-six-50.vercel.app'], // Разрешенные источники
+  credentials: true, // Для отправки cookie или токенов с запросами
+}));
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.static('public'));
+
+// Маршруты
+app.post('/register', registertUser);
+app.post('/login', loginUser);
 app.get('/', verifyUser, async (req, res) => {
-    return res.json({email: req.email, username: req.username})
-})
-// Logout
-app.post('/logout', logoutUser)
-// Create Post
-app.post('/create',verifyUser, upload.single('file'), createPost)
-// Get Posts
-app.get('/getposts', getPosts)
-// Get post by id
-app.get('/getpostbyid/:id', getPostById)
-// Delete post by id
-app.delete('/deletepost/:id', deletePost)
-// Edit post by id
-app.put('/editpost/:id',upload.single('file'), editPost)
+  return res.json({ email: req.email, username: req.username });
+});
+app.post('/logout', logoutUser);
+app.post('/create', verifyUser, upload.single('file'), createPost);
+app.get('/getposts', getPosts);
+app.get('/getpostbyid/:id', getPostById);
+app.delete('/deletepost/:id', deletePost);
+app.put('/editpost/:id', upload.single('file'), editPost);
 
-
-startServer(app)
+// Запуск сервера
+startServer(app);
