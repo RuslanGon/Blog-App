@@ -13,7 +13,8 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3001/getpostbyid/${id}`);
+        const { data } = await axios.get(`https://blog-app-sx5g.onrender.com/getpostbyid/${id}`);
+        // http://localhost:3001/getpostbyid/${id}
         setTitle(data.title);
         setDesc(data.desc);
       } catch (err) {
@@ -35,7 +36,8 @@ const EditPost = () => {
     console.log('Данные формы перед отправкой:', { title, desc, file });
   
     try {
-      await axios.put(`http://localhost:3001/editpost/${id}`, formData, {
+      await axios.put(`https://blog-app-sx5g.onrender.com/editpost/${id}`, formData, {
+        // http://localhost:3001/editpost/${id}
         headers: {
           'Content-Type': 'multipart/form-data',
         },

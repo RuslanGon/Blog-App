@@ -22,7 +22,8 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/", { withCredentials: true });
+        const response = await axios.get("https://blog-app-sx5g.onrender.com/", { withCredentials: true });
+        // http://localhost:3001/
         console.log(response.data);  
         if (response.data.email) {
           setUser(response.data);  

@@ -13,7 +13,8 @@ const navigate = useNavigate()
 const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/register', 
+      const response = await axios.post('https://blog-app-sx5g.onrender.com/register', 
+      // http://localhost:3001/register
       { username, email, password });
       console.log(response);
       navigate('/login')

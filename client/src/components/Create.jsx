@@ -19,7 +19,8 @@ const handleSubmit = async (e) => {
   formData.append("file", file); 
 
   try {
-    const response = await axios.post("http://localhost:3001/create",formData,
+    const response = await axios.post("https://blog-app-sx5g.onrender.com/create", formData,
+    // http://localhost:3001/create
       {
         headers: {
           "Content-Type": "multipart/form-data",

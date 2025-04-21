@@ -10,7 +10,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     setUser({}); 
-    axios.post("http://localhost:3001/logout", {}, { withCredentials: true }) 
+    axios.post('https://blog-app-sx5g.onrender.com/logout', {}, { withCredentials: true }) 
+    // http://localhost:3001/logout
       .then(() => {
         console.log("User logged out");
         setIsLoggedIn(false); 

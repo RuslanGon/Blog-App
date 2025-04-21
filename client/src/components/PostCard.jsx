@@ -11,7 +11,9 @@ const PostCard = () => {
   useEffect(() => {
     const fetchPostById = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/getpostbyid/${id}`);
+        const response = await axios.get(`https://blog-app-sx5g.onrender.com/getpostbyid/${id}
+        `);
+        // http://localhost:3001/getpostbyid/${id}
         console.log(response.data);
         setPost(response.data);
       } catch (error) {
@@ -23,7 +25,9 @@ const PostCard = () => {
 
   const handleDeletePost = async () => {
     try {
-      await axios.delete(`http://localhost:3001/deletepost/${id}`);
+      await axios.delete(`https://blog-app-sx5g.onrender.com/deletepost/${id}
+      `);
+      // http://localhost:3001/deletepost/${id}
       navigate('/');
     } catch (error) {
       console.error('Ошибка при удалении поста:', error);
@@ -35,7 +39,8 @@ const PostCard = () => {
     <div className={css.postCardContainer}>
       <div className={css.postCard}>
         <Link className={css.link} to='/'>🔙</Link>
-        <img src={`http://localhost:3001/Image/${post.file}`} alt={post.title} />
+        <img src={`https://blog-app-sx5g.onrender.com/Image/${post.file}`} alt={post.title} />
+        {/* http://localhost:3001/Image/${post.file} */}
         <div className={css.postCardContent}>
           <h2>{post.title}</h2>
           <p>{post.desc}</p>

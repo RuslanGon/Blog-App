@@ -10,7 +10,8 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/getposts');
+        const response = await axios.get('https://blog-app-sx5g.onrender.com/getposts');
+        // http://localhost:3001/getposts
         console.log(response.data);
         setPost(response.data)
       } catch (error) {
@@ -26,7 +27,8 @@ const Home = () => {
     {posts.map((post) => (
       <Link to={`/post/${post._id}`} key={post._id}>
       <div className={css.post}>
-        <img src={`http://localhost:3001/Image/${post.file}`} alt={post.title} />
+        <img src={`https://blog-app-sx5g.onrender.com/Image/${post.file}`} alt={post.title} />
+        {/* http://localhost:3001/Image/${post.file} */}
         <div className={css.post_text}>
           <h3>{post.title}</h3>
           <p>{post.desc}</p>
