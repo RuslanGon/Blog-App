@@ -35,8 +35,8 @@ export const registertUser = async (req, res) => {
     res
     .cookie('token', token, {
       httpOnly: true,
-      sameSite: 'Lax', // или 'None' если ты на HTTPS
-      secure: false,    // true, если у тебя HTTPS
+      sameSite: 'None', // или 'None' если ты на HTTPS
+      secure: true,    // true, если у тебя HTTPS
       maxAge: 24 * 60 * 60 * 1000, // 1 день
     })
 
@@ -75,8 +75,8 @@ export const loginUser = async (req, res) => {
     );
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,        
-      sameSite: 'Lax'   
+      secure: true,        
+      sameSite: 'None'   
     });
     res.status(200).json({
       message: "Login successful",
